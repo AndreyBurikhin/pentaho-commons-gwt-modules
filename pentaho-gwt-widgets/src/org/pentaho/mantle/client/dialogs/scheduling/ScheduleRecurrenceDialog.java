@@ -20,6 +20,30 @@ package org.pentaho.mantle.client.dialogs.scheduling;
 import java.util.Date;
 import java.util.List;
 
+import org.pentaho.gwt.widgets.client.dialogs.IDialogCallback;
+import org.pentaho.gwt.widgets.client.dialogs.MessageDialogBox;
+import org.pentaho.gwt.widgets.client.dialogs.PromptDialogBox;
+import org.pentaho.gwt.widgets.client.utils.TimeUtil;
+import org.pentaho.gwt.widgets.client.utils.TimeUtil.DayOfWeek;
+import org.pentaho.gwt.widgets.client.utils.TimeUtil.MonthOfYear;
+import org.pentaho.gwt.widgets.client.utils.TimeUtil.WeekOfMonth;
+import org.pentaho.gwt.widgets.client.utils.string.StringUtils;
+import org.pentaho.gwt.widgets.client.wizards.AbstractWizardDialog;
+import org.pentaho.gwt.widgets.client.wizards.IWizardPanel;
+import org.pentaho.mantle.client.dialogs.scheduling.RecurrenceEditor.DailyRecurrenceEditor;
+import org.pentaho.mantle.client.dialogs.scheduling.RecurrenceEditor.MonthlyRecurrenceEditor;
+import org.pentaho.mantle.client.dialogs.scheduling.RecurrenceEditor.WeeklyRecurrenceEditor;
+import org.pentaho.mantle.client.dialogs.scheduling.RecurrenceEditor.YearlyRecurrenceEditor;
+import org.pentaho.mantle.client.dialogs.scheduling.ScheduleEditor.DurationValues;
+import org.pentaho.mantle.client.dialogs.scheduling.ScheduleEditor.ScheduleType;
+import org.pentaho.mantle.client.messages.Messages;
+import org.pentaho.mantle.client.workspace.BlockoutPanel;
+import org.pentaho.mantle.client.workspace.JsBlockStatus;
+import org.pentaho.mantle.client.workspace.JsJob;
+import org.pentaho.mantle.client.workspace.JsJobParam;
+import org.pentaho.mantle.client.workspace.JsJobTrigger;
+import org.pentaho.mantle.login.client.MantleLoginDialog;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayInteger;
@@ -47,31 +71,6 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.Widget;
-
-import org.pentaho.gwt.widgets.client.dialogs.IDialogCallback;
-import org.pentaho.gwt.widgets.client.dialogs.MessageDialogBox;
-import org.pentaho.gwt.widgets.client.dialogs.PromptDialogBox;
-import org.pentaho.gwt.widgets.client.utils.TimeUtil;
-import org.pentaho.gwt.widgets.client.utils.TimeUtil.DayOfWeek;
-import org.pentaho.gwt.widgets.client.utils.TimeUtil.MonthOfYear;
-import org.pentaho.gwt.widgets.client.utils.TimeUtil.WeekOfMonth;
-import org.pentaho.gwt.widgets.client.utils.string.StringUtils;
-import org.pentaho.gwt.widgets.client.wizards.AbstractWizardDialog;
-import org.pentaho.gwt.widgets.client.wizards.IWizardPanel;
-import org.pentaho.mantle.client.dialogs.scheduling.RecurrenceEditor.DailyRecurrenceEditor;
-import org.pentaho.mantle.client.dialogs.scheduling.RecurrenceEditor.MonthlyRecurrenceEditor;
-import org.pentaho.mantle.client.dialogs.scheduling.RecurrenceEditor.WeeklyRecurrenceEditor;
-import org.pentaho.mantle.client.dialogs.scheduling.RecurrenceEditor.YearlyRecurrenceEditor;
-import org.pentaho.mantle.client.dialogs.scheduling.ScheduleEditor.DurationValues;
-import org.pentaho.mantle.client.dialogs.scheduling.ScheduleEditor.ScheduleType;
-import org.pentaho.mantle.client.messages.Messages;
-import org.pentaho.mantle.client.ui.PerspectiveManager;
-import org.pentaho.mantle.client.workspace.BlockoutPanel;
-import org.pentaho.mantle.client.workspace.JsBlockStatus;
-import org.pentaho.mantle.client.workspace.JsJob;
-import org.pentaho.mantle.client.workspace.JsJobParam;
-import org.pentaho.mantle.client.workspace.JsJobTrigger;
-import org.pentaho.mantle.login.client.MantleLoginDialog;
 
 /**
  * @author wseyler
@@ -855,17 +854,17 @@ public class ScheduleRecurrenceDialog extends AbstractWizardDialog {
                 callback.okPressed();
               }
               if ( showSuccessDialog ) {
-                if ( !PerspectiveManager.getInstance().getActivePerspective().getId().equals(
-                    PerspectiveManager.SCHEDULES_PERSPECTIVE ) ) {
-                  ScheduleCreateStatusDialog successDialog = new ScheduleCreateStatusDialog();
-                  successDialog.center();
-                } else {
+                //TODO TODO       if ( !PerspectiveManager.getInstance().getActivePerspective().getId().equals(
+                //TODO TODO            PerspectiveManager.SCHEDULES_PERSPECTIVE ) ) {
+                //TODO TODO          ScheduleCreateStatusDialog successDialog = new ScheduleCreateStatusDialog();
+                //TODO TODO          successDialog.center();
+                //TODO TODO   } else {
                   MessageDialogBox dialogBox =
                       new MessageDialogBox(
                           Messages.getString( "scheduleUpdatedTitle" ), Messages.getString( "scheduleUpdatedMessage" ), //$NON-NLS-1$ //$NON-NLS-2$ 
                           false, false, true );
                   dialogBox.center();
-                }
+                  //TODO TODO   }
               }
             } else {
               MessageDialogBox dialogBox = new MessageDialogBox( Messages.getString( "error" ), //$NON-NLS-1$

@@ -17,6 +17,14 @@
 
 package org.pentaho.mantle.client.dialogs.scheduling;
 
+import org.pentaho.gwt.widgets.client.dialogs.IDialogCallback;
+import org.pentaho.gwt.widgets.client.dialogs.IDialogValidatorCallback;
+import org.pentaho.gwt.widgets.client.dialogs.MessageDialogBox;
+import org.pentaho.gwt.widgets.client.dialogs.PromptDialogBox;
+import org.pentaho.gwt.widgets.client.utils.NameUtils;
+import org.pentaho.gwt.widgets.client.utils.string.StringUtils;
+import org.pentaho.mantle.client.messages.Messages;
+
 import com.google.gwt.dom.client.Style.VerticalAlign;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
@@ -33,15 +41,6 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
-
-import org.pentaho.gwt.widgets.client.dialogs.IDialogCallback;
-import org.pentaho.gwt.widgets.client.dialogs.IDialogValidatorCallback;
-import org.pentaho.gwt.widgets.client.dialogs.MessageDialogBox;
-import org.pentaho.gwt.widgets.client.dialogs.PromptDialogBox;
-import org.pentaho.gwt.widgets.client.utils.NameUtils;
-import org.pentaho.gwt.widgets.client.utils.string.StringUtils;
-import org.pentaho.mantle.client.dialogs.SelectFolderDialog;
-import org.pentaho.mantle.client.messages.Messages;
 
 public abstract class ScheduleOutputLocationDialog extends PromptDialogBox {
   private String filePath;
@@ -96,16 +95,17 @@ public abstract class ScheduleOutputLocationDialog extends PromptDialogBox {
     browseButton.addClickHandler( new ClickHandler() {
 
       public void onClick( ClickEvent event ) {
-        final SelectFolderDialog selectFolder = new SelectFolderDialog();
-        selectFolder.setCallback( new IDialogCallback() {
-          public void okPressed() {
-            scheduleLocationTextBox.setText( selectFolder.getSelectedPath() );
-          }
-
-          public void cancelPressed() {
-          }
-        } );
-        selectFolder.center();
+//   TODO TODO     final SelectFolderDialog selectFolder = new SelectFolderDialog();
+//        selectFolder.setCallback( new IDialogCallback() {
+//          public void okPressed() {
+//            scheduleLocationTextBox.setText( selectFolder.getSelectedPath() );
+//          }
+//
+//          public void cancelPressed() {
+//          }
+//        } );
+//        selectFolder.center();
+        scheduleLocationTextBox.setText( "/home/admin" );
       }
     } );
     browseButton.setStyleName( "pentaho-button" );

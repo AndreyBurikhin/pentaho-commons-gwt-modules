@@ -23,7 +23,6 @@ import org.pentaho.gwt.widgets.client.dialogs.PromptDialogBox;
 import org.pentaho.gwt.widgets.client.utils.NameUtils;
 import org.pentaho.gwt.widgets.client.utils.string.StringUtils;
 import org.pentaho.gwt.widgets.client.wizards.AbstractWizardDialog.ScheduleDialogType;
-import org.pentaho.mantle.client.dialogs.SelectFolderDialog;
 import org.pentaho.mantle.client.dialogs.WaitPopup;
 import org.pentaho.mantle.client.messages.Messages;
 import org.pentaho.mantle.client.workspace.JsJob;
@@ -122,16 +121,17 @@ public class NewScheduleDialog extends PromptDialogBox {
     browseButton.addClickHandler( new ClickHandler() {
 
       public void onClick( ClickEvent event ) {
-        final SelectFolderDialog selectFolder = new SelectFolderDialog();
-        selectFolder.setCallback( new IDialogCallback() {
-          public void okPressed() {
-            scheduleLocationTextBox.setText( selectFolder.getSelectedPath() );
-          }
-
-          public void cancelPressed() {
-          }
-        } );
-        selectFolder.center();
+//  TODO TODO      final SelectFolderDialog selectFolder = new SelectFolderDialog();
+//        selectFolder.setCallback( new IDialogCallback() {
+//          public void okPressed() {
+//            scheduleLocationTextBox.setText( selectFolder.getSelectedPath() );
+//          }
+//
+//          public void cancelPressed() {
+//          }
+//        } );
+//        selectFolder.center();
+        scheduleLocationTextBox.setText( "/home/admin" );
       }
     } );
     browseButton.setStyleName( "pentaho-button" );

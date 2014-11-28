@@ -17,11 +17,11 @@
 
 package org.pentaho.mantle.client.dialogs.scheduling;
 
-import com.google.gwt.user.client.ui.HasHorizontalAlignment;
-import com.google.gwt.user.client.ui.Label;
 import org.pentaho.gwt.widgets.client.dialogs.PromptDialogBox;
 import org.pentaho.mantle.client.messages.Messages;
-import org.pentaho.mantle.client.ui.PerspectiveManager;
+
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.google.gwt.user.client.ui.Label;
 
 public class ScheduleCreateStatusDialog extends PromptDialogBox {
 
@@ -37,7 +37,7 @@ public class ScheduleCreateStatusDialog extends PromptDialogBox {
 
   protected void onOk() {
     super.onOk();
-    PerspectiveManager.getInstance().setPerspective( PerspectiveManager.SCHEDULES_PERSPECTIVE );
+  //TODO TODO  PerspectiveManager.getInstance().setPerspective( PerspectiveManager.SCHEDULES_PERSPECTIVE );
   }
 
 }

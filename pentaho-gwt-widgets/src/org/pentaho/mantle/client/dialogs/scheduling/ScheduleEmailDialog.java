@@ -17,6 +17,13 @@
 
 package org.pentaho.mantle.client.dialogs.scheduling;
 
+import org.pentaho.gwt.widgets.client.dialogs.IDialogCallback;
+import org.pentaho.gwt.widgets.client.dialogs.MessageDialogBox;
+import org.pentaho.gwt.widgets.client.wizards.AbstractWizardDialog;
+import org.pentaho.gwt.widgets.client.wizards.IWizardPanel;
+import org.pentaho.mantle.client.messages.Messages;
+import org.pentaho.mantle.client.workspace.JsJob;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
@@ -31,17 +38,8 @@ import com.google.gwt.json.client.JSONArray;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONValue;
-import org.pentaho.gwt.widgets.client.dialogs.IDialogCallback;
-import org.pentaho.gwt.widgets.client.dialogs.MessageDialogBox;
-import org.pentaho.gwt.widgets.client.wizards.AbstractWizardDialog;
-import org.pentaho.gwt.widgets.client.wizards.IWizardPanel;
-import org.pentaho.mantle.client.messages.Messages;
-import org.pentaho.mantle.client.solutionbrowser.filelist.FileItem;
-import org.pentaho.mantle.client.ui.PerspectiveManager;
-import org.pentaho.mantle.client.workspace.JsJob;
 
 public class ScheduleEmailDialog extends AbstractWizardDialog {
-  FileItem fileItem = null;
   String moduleBaseURL = GWT.getModuleBaseURL();
   String moduleName = GWT.getModuleName();
   String contextURL = moduleBaseURL.substring( 0, moduleBaseURL.lastIndexOf( moduleName ) );
@@ -153,10 +151,10 @@ public class ScheduleEmailDialog extends AbstractWizardDialog {
                       Messages.getString( "runInBackground" ), Messages.getString( "backgroundExecutionStarted" ), //$NON-NLS-1$ //$NON-NLS-2$
                       false, false, true );
               dialogBox.center();
-            } else if ( !PerspectiveManager.getInstance().getActivePerspective().getId().equals(
-                PerspectiveManager.SCHEDULES_PERSPECTIVE ) ) {
-              ScheduleCreateStatusDialog successDialog = new ScheduleCreateStatusDialog();
-              successDialog.center();
+              //TODO TODO       } else if ( !PerspectiveManager.getInstance().getActivePerspective().getId().equals(
+              //TODO TODO          PerspectiveManager.SCHEDULES_PERSPECTIVE ) ) {
+              //TODO TODO        ScheduleCreateStatusDialog successDialog = new ScheduleCreateStatusDialog();
+              //TODO TODO        successDialog.center();
             } else {
               MessageDialogBox dialogBox =
                   new MessageDialogBox(

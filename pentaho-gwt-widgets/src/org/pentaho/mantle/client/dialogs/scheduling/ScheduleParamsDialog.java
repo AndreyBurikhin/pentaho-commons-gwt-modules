@@ -17,6 +17,18 @@
 
 package org.pentaho.mantle.client.dialogs.scheduling;
 
+import org.pentaho.gwt.widgets.client.dialogs.IDialogCallback;
+import org.pentaho.gwt.widgets.client.dialogs.MessageDialogBox;
+import org.pentaho.gwt.widgets.client.utils.NameUtils;
+import org.pentaho.gwt.widgets.client.utils.string.StringTokenizer;
+import org.pentaho.gwt.widgets.client.utils.string.StringUtils;
+import org.pentaho.gwt.widgets.client.wizards.AbstractWizardDialog;
+import org.pentaho.gwt.widgets.client.wizards.IWizardPanel;
+import org.pentaho.mantle.client.messages.Messages;
+import org.pentaho.mantle.client.workspace.JsJob;
+import org.pentaho.mantle.client.workspace.JsJobParam;
+import org.pentaho.mantle.login.client.MantleLoginDialog;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
@@ -36,26 +48,11 @@ import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
-import org.pentaho.gwt.widgets.client.dialogs.IDialogCallback;
-import org.pentaho.gwt.widgets.client.dialogs.MessageDialogBox;
-import org.pentaho.gwt.widgets.client.utils.NameUtils;
-import org.pentaho.gwt.widgets.client.utils.string.StringTokenizer;
-import org.pentaho.gwt.widgets.client.utils.string.StringUtils;
-import org.pentaho.gwt.widgets.client.wizards.AbstractWizardDialog;
-import org.pentaho.gwt.widgets.client.wizards.IWizardPanel;
-import org.pentaho.mantle.client.messages.Messages;
-import org.pentaho.mantle.client.solutionbrowser.filelist.FileItem;
-import org.pentaho.mantle.client.ui.PerspectiveManager;
-import org.pentaho.mantle.client.workspace.JsJob;
-import org.pentaho.mantle.client.workspace.JsJobParam;
-import org.pentaho.mantle.login.client.MantleLoginDialog;
-
 /**
  * @author wseyler
  * 
  */
 public class ScheduleParamsDialog extends AbstractWizardDialog {
-  FileItem fileItem = null;
   String moduleBaseURL = GWT.getModuleBaseURL();
   String moduleName = GWT.getModuleName();
   String contextURL = moduleBaseURL.substring( 0, moduleBaseURL.lastIndexOf( moduleName ) );
@@ -225,10 +222,10 @@ public class ScheduleParamsDialog extends AbstractWizardDialog {
                         Messages.getString( "runInBackground" ), Messages.getString( "backgroundExecutionStarted" ), //$NON-NLS-1$ //$NON-NLS-2$
                         false, false, true );
                 dialogBox.center();
-              } else if ( !PerspectiveManager.getInstance().getActivePerspective().getId().equals(
-                  PerspectiveManager.SCHEDULES_PERSPECTIVE ) ) {
-                ScheduleCreateStatusDialog successDialog = new ScheduleCreateStatusDialog();
-                successDialog.center();
+                //TODO TODO      } else if ( !PerspectiveManager.getInstance().getActivePerspective().getId().equals(
+                //TODO TODO         PerspectiveManager.SCHEDULES_PERSPECTIVE ) ) {
+                //TODO TODO       ScheduleCreateStatusDialog successDialog = new ScheduleCreateStatusDialog();
+                //TODO TODO       successDialog.center();
               } else {
                 MessageDialogBox dialogBox =
                     new MessageDialogBox(

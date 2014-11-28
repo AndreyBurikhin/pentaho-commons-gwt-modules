@@ -17,6 +17,16 @@
 
 package org.pentaho.mantle.client.dialogs.scheduling;
 
+import org.pentaho.gwt.widgets.client.dialogs.IDialogCallback;
+import org.pentaho.gwt.widgets.client.dialogs.MessageDialogBox;
+import org.pentaho.gwt.widgets.client.dialogs.PromptDialogBox;
+import org.pentaho.gwt.widgets.client.filechooser.RepositoryFile;
+import org.pentaho.mantle.client.commands.AbstractCommand;
+import org.pentaho.mantle.client.events.EventBusUtil;
+import org.pentaho.mantle.client.events.SolutionFileActionEvent;
+import org.pentaho.mantle.client.messages.Messages;
+import org.pentaho.mantle.login.client.MantleLoginDialog;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
@@ -27,16 +37,6 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import org.pentaho.gwt.widgets.client.dialogs.IDialogCallback;
-import org.pentaho.gwt.widgets.client.dialogs.MessageDialogBox;
-import org.pentaho.gwt.widgets.client.dialogs.PromptDialogBox;
-import org.pentaho.gwt.widgets.client.filechooser.RepositoryFile;
-import org.pentaho.mantle.client.commands.AbstractCommand;
-import org.pentaho.mantle.client.events.EventBusUtil;
-import org.pentaho.mantle.client.events.SolutionFileActionEvent;
-import org.pentaho.mantle.client.messages.Messages;
-import org.pentaho.mantle.client.solutionbrowser.SolutionBrowserPanel;
-import org.pentaho.mantle.login.client.MantleLoginDialog;
 
 public class ScheduleHelper {
 
@@ -135,25 +135,25 @@ public class ScheduleHelper {
           extension = repositoryFile.getPath().substring( repositoryFile.getPath().lastIndexOf( "." ) + 1 ); //$NON-NLS-1$
         }
 
-        if ( SolutionBrowserPanel.getInstance().getExecutableFileExtensions().contains( extension ) ) {
-          showScheduleDialog( repositoryFile.getPath() );
-        } else {
-          final MessageDialogBox dialogBox =
-              new MessageDialogBox(
-                  Messages.getString( "open" ), Messages.getString( "scheduleInvalidFileType", repositoryFile.getPath() ), false, false, true ); //$NON-NLS-1$ //$NON-NLS-2$
+     // TODO TODO  if ( SolutionBrowserPanel.getInstance().getExecutableFileExtensions().contains( extension ) ) {
+     // TODO TODO     showScheduleDialog( repositoryFile.getPath() );
+     // TODO TODO   } else {
+     // TODO TODO     final MessageDialogBox dialogBox =
+     // TODO TODO         new MessageDialogBox(
+     // TODO TODO            Messages.getString( "open" ), Messages.getString( "scheduleInvalidFileType", repositoryFile.getPath() ), false, false, true ); //$NON-NLS-1$ //$NON-NLS-2$
+     // TODO TODO
+     // TODO TODO    dialogBox.setCallback( new IDialogCallback() {
+     // TODO TODO      public void cancelPressed() {
+     // TODO TODO      }
 
-          dialogBox.setCallback( new IDialogCallback() {
-            public void cancelPressed() {
-            }
+     // TODO TODO      public void okPressed() {
+     // TODO TODO        dialogBox.hide();
+     // TODO TODO      }
+     // TODO TODO    } );
 
-            public void okPressed() {
-              dialogBox.hide();
-            }
-          } );
-
-          dialogBox.center();
-          return;
-        }
+     // TODO TODO     dialogBox.center();
+     // TODO TODO      return;
+     // TODO TODO  }
 
       }
 
