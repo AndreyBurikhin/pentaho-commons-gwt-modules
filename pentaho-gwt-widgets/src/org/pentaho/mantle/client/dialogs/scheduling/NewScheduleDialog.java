@@ -206,11 +206,11 @@ public class NewScheduleDialog extends PromptDialogBox {
 
     if ( ( urlPath != null ) && ( urlPath.endsWith( "xaction" ) ) ) {
       isXAction = true;
-      scheduleFileRequestBuilder = new RequestBuilder( RequestBuilder.GET, GWT.getHostPageBaseURL() + "api/repos/" + urlPath
+      scheduleFileRequestBuilder = new RequestBuilder( RequestBuilder.GET, ScheduleHelper.getFullyQualifiedURL() + "api/repos/" + urlPath
           + "/parameterUi" );
     } else {
       isXAction = false;
-      scheduleFileRequestBuilder = new RequestBuilder( RequestBuilder.GET, GWT.getHostPageBaseURL() + "api/repo/files/" + urlPath
+      scheduleFileRequestBuilder = new RequestBuilder( RequestBuilder.GET, ScheduleHelper.getFullyQualifiedURL() + "api/repo/files/" + urlPath
           + "/parameterizable" );
     }
 

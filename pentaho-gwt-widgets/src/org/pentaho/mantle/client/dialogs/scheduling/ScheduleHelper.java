@@ -58,7 +58,7 @@ public class ScheduleHelper {
     event.setAction( ScheduleHelper.class.getName() );
     try {
 
-      final String url = GWT.getHostPageBaseURL() + "api/mantle/isAuthenticated"; //$NON-NLS-1$
+      final String url = ScheduleHelper.getFullyQualifiedURL() + "api/mantle/isAuthenticated"; //$NON-NLS-1$
       RequestBuilder requestBuilder = new RequestBuilder( RequestBuilder.GET, url );
       requestBuilder.setHeader( "accept", "text/plain" );
       requestBuilder.setHeader( "If-Modified-Since", "01 Jan 1970 00:00:00 GMT" );
@@ -160,7 +160,7 @@ public class ScheduleHelper {
       protected void performOperation() {
 
         // hit the server and check: isScheduleAllowed
-        final String url = GWT.getHostPageBaseURL() + "api/scheduler/isScheduleAllowed?id=" + repositoryFile.getId(); //$NON-NLS-1$
+        final String url = ScheduleHelper.getFullyQualifiedURL() + "api/scheduler/isScheduleAllowed?id=" + repositoryFile.getId(); //$NON-NLS-1$
         RequestBuilder requestBuilder = new RequestBuilder( RequestBuilder.GET, url );
         requestBuilder.setHeader( "accept", "text/plain" );
         requestBuilder.setHeader( "If-Modified-Since", "01 Jan 1970 00:00:00 GMT" );
@@ -262,4 +262,8 @@ public class ScheduleHelper {
     scheduleInBackground.center();
   }
 
+  public static native String getFullyQualifiedURL()
+  /*-{
+    return $wnd.location.protocol + "//" + $wnd.location.host + $wnd.CONTEXT_PATH
+  }-*/;
 }
