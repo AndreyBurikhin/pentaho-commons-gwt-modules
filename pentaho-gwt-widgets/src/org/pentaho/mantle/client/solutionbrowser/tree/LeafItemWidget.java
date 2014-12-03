@@ -36,7 +36,7 @@ public class LeafItemWidget extends Composite {
     HorizontalPanel widget = new HorizontalPanel();
     initWidget( widget );
 
-    //TODO - it should be discussed
+    //TODO Andrey_Burikhin - choose GWT.getHostPageBaseURL() or getFullyQualifiedURL()!
     leafImage.setUrl(GWT.getModuleBaseURL() + "images/spacer.gif");  //ImageUtil.getThemeableImage( styleName );
     for (String style: styleName) {
       leafImage.addStyleName(style);

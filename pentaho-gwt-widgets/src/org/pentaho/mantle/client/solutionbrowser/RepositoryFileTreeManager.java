@@ -24,6 +24,7 @@ import org.pentaho.gwt.widgets.client.filechooser.JsonToRepositoryFileTreeConver
 import org.pentaho.gwt.widgets.client.filechooser.RepositoryFile;
 import org.pentaho.gwt.widgets.client.filechooser.RepositoryFileTree;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestCallback;
@@ -107,7 +108,7 @@ public class RepositoryFileTreeManager {
     }
   }
   
-  //TODO - should be discussed
+  //TODO Andrey_Burikhin - choose GWT.getHostPageBaseURL() or getFullyQualifiedURL() - should be discussed
   private native String getFullyQualifiedURL()
   /*-{
     return $wnd.location.protocol + "//" + $wnd.location.host + $wnd.CONTEXT_PATH
@@ -119,6 +120,7 @@ public class RepositoryFileTreeManager {
     // such as busy cursor or tree loading indicators)
     beforeFetchRepositoryFileTree();
     RequestBuilder builder = null;
+    //TODO Andrey_Burikhin - choose GWT.getHostPageBaseURL() or getFullyQualifiedURL()!
     String url = getFullyQualifiedURL() + "api/repo/files/:/tree?"; //$NON-NLS-1$
     if ( depth == null ) {
       depth = -1;
@@ -150,7 +152,7 @@ public class RepositoryFileTreeManager {
           final JsonToRepositoryFileTreeConverter converter =
               new JsonToRepositoryFileTreeConverter( response.getText() );
           fileTree = converter.getTree();
-
+          //TODO Andrey_Burikhin - choose GWT.getHostPageBaseURL() or getFullyQualifiedURL()!
           String deletedFilesUrl = getFullyQualifiedURL() + "api/repo/files/deleted?ts=" + System.currentTimeMillis();
           RequestBuilder deletedFilesRequestBuilder = new RequestBuilder( RequestBuilder.GET, deletedFilesUrl );
           deletedFilesRequestBuilder.setHeader( "Accept", "application/json" );
