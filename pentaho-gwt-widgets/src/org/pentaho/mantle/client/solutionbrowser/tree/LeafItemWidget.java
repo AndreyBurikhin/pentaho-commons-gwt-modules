@@ -37,7 +37,7 @@ public class LeafItemWidget extends Composite {
     initWidget( widget );
 
     //TODO - it should be discussed
-    leafImage.setUrl(GWT.getModuleBaseURL() + "images/spacer.gif");  //ImageUtil.getThemeableImage( styleName );
+    leafImage = new Image(GWT.getModuleBaseURL() + "images/spacer.gif");  //ImageUtil.getThemeableImage( styleName );
     for (String style: styleName) {
       leafImage.addStyleName(style);
     }

@@ -19,18 +19,23 @@ package org.pentaho.mantle.client.dialogs;
 
 import org.pentaho.gwt.widgets.client.dialogs.PromptDialogBox;
 import org.pentaho.gwt.widgets.client.toolbar.Toolbar;
+import org.pentaho.gwt.widgets.client.toolbar.ToolbarButton;
+import org.pentaho.gwt.widgets.client.ui.ICallback;
+import org.pentaho.mantle.client.commands.NewFolderCommand;
 import org.pentaho.mantle.client.messages.Messages;
 import org.pentaho.mantle.client.solutionbrowser.tree.FileTreeItem;
 import org.pentaho.mantle.client.solutionbrowser.tree.SolutionTree;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.TreeItem;
 import com.google.gwt.user.client.ui.VerticalPanel;
-//import org.pentaho.mantle.client.commands.NewFolderCommand;
 
 public class SelectFolderDialog extends PromptDialogBox {
 
@@ -76,8 +81,11 @@ public class SelectFolderDialog extends PromptDialogBox {
     bar.setStyleName( "select-folder-toolbar" );
     bar.add( new Label( Messages.getString( "newFolderColon" ), false ) );
     bar.add( Toolbar.GLUE );
-    //TODO - move NewCommand dependencies to widgets
-    /*ToolbarButton add = new ToolbarButton( ImageUtil.getThemeableImage( "icon-small", "pentaho-addbutton" ) );
+    
+    Image addButtonImage = new Image(GWT.getModuleBaseURL() + "images/spacer.gif");
+    addButtonImage.addStyleName( "icon-small" );
+    addButtonImage.addStyleName( "pentaho-addbutton" ); 
+    ToolbarButton add = new ToolbarButton( addButtonImage );
     add.setToolTip( Messages.getString( "createNewFolder" ) );
     add.setCommand( new Command() {
       public void execute() {
@@ -92,7 +100,7 @@ public class SelectFolderDialog extends PromptDialogBox {
       }
     } );
     bar.add( add );
-*/
+
     VerticalPanel content = new VerticalPanel();
     content.add( bar );
     content.add( treeWrapper );
