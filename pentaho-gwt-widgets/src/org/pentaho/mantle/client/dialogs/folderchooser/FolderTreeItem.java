@@ -25,14 +25,17 @@ import org.pentaho.gwt.widgets.client.filechooser.RepositoryFile;
 public class FolderTreeItem extends TreeItem {
   public String fileName;
   public String url;
+  private static final String ITEM_STYLE_NAME = "TreeItem";
   private RepositoryFile repositoryFile;
-
+  
   public FolderTreeItem() {
     super();
+    setStyleName( ITEM_STYLE_NAME );
   }
 
   public FolderTreeItem( Widget widget ) {
     super( widget );
+    setStyleName( ITEM_STYLE_NAME );
   }
 
   /**
@@ -41,6 +44,7 @@ public class FolderTreeItem extends TreeItem {
   public FolderTreeItem( String string ) {
     super( ( new SafeHtmlBuilder() ).appendEscaped( string ).toSafeHtml() );
     getElement().setId( string );
+    setStyleName( ITEM_STYLE_NAME );
   }
 
   public String getFileName() {
